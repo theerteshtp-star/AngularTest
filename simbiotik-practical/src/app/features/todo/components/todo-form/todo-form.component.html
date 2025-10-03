@@ -1,0 +1,64 @@
+<div class="p-6 max-w-lg mx-auto bg-white shadow rounded">
+  <h3 class="text-xl font-bold mb-4">
+    {{ id ? 'Edit TODO' : 'Create TODO' }}
+  </h3>
+
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <!-- Title -->
+    <div class="mb-4">
+      <label class="block text-sm font-medium mb-1">Title</label>
+      <input
+        type="text"
+        formControlName="title"
+        class="w-full border rounded p-2"
+        placeholder="Enter title"
+      />
+      <div
+        *ngIf="form.get('title')?.touched && form.get('title')?.invalid"
+        class="text-red-500 text-sm mt-1"
+      >
+        Title is required
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="mb-4">
+      <label class="block text-sm font-medium mb-1">Description</label>
+      <textarea
+        formControlName="description"
+        rows="3"
+        class="w-full border rounded p-2"
+        placeholder="Enter description"
+      ></textarea>
+    </div>
+
+    <!-- Completed -->
+    <div class="mb-4 flex items-center">
+      <input
+        type="checkbox"
+        id="completed"
+        formControlName="completed"
+        class="mr-2"
+      />
+      <label for="completed">Completed</label>
+    </div>
+
+    <!-- Actions -->
+    <div class="flex justify-end gap-2">
+      <button
+        type="button"
+        routerLink="/todo"
+        class="bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded"
+      >
+        Cancel
+      </button>
+      <button
+        type="submit"
+        [disabled]="form.invalid"
+        class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
+      >
+        Save
+      </button>
+    </div>
+  </form>
+</div>

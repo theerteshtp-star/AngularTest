@@ -1,0 +1,22 @@
+<div class="p-4">
+  <div class="flex justify-between items-center mb-4">
+    <h3 class="text-xl">TODOs</h3>
+    <a routerLink="/todo/new" class="bg-green-600 text-white px-3 py-1 rounded">Add</a>
+  </div>
+  <div *ngIf="loading">Loading...</div>
+  <table *ngIf="!loading" class="w-full table-auto">
+    <thead><tr><th>Title</th><th>Description</th><th>Actions</th></tr></thead>
+    <tbody>
+      <tr *ngFor="let t of todos" class="border-t">
+        <td>{{t.title}}</td>
+        <td>{{t.description}}</td>
+        <td>
+          <a [routerLink]="['/todo', t.id, 'edit']" class="mr-2">Edit</a>
+          <a [routerLink]="['/todo', t.id, 'view']" class="mr-2">View</a>
+          <button (click)="deleteTodo(t.id)" class="text-red-600">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="error" class="text-red-500 mt-2">{{error}}</div>
+</div>
