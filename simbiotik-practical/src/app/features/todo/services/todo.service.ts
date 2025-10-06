@@ -12,7 +12,7 @@ export interface Todo {
 
 @Injectable({ providedIn: 'root' })
 export class TodoService {
-  base = `${environment.simbiotikApiBase}/todos`; // check swagger path
+  base = `${environment.simbiotikApiBase}/todos`; 
   constructor(private http: HttpClient) {}
 
   list(): Observable<Todo[]> { return this.http.get<Todo[]>(this.base); }

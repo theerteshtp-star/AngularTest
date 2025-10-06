@@ -5,10 +5,10 @@ import { TodoFormComponent } from './components/todo-form/todo-form.component';
 import { TodoDetailComponent } from './components/todo-detail/todo-detail.component';
 
 const routes: Routes = [
-  { path: '', component: TodoListComponent },        // /todo
-  { path: 'new', component: TodoFormComponent },     // /todo/new
-  { path: ':id/edit', component: TodoFormComponent },// /todo/5/edit
-  { path: ':id/view', component: TodoDetailComponent } // /todo/5/view
+  { path: '', component: TodoListComponent },        
+  { path: 'new', component: TodoFormComponent },     
+  { path: ':id/edit', component: TodoFormComponent },
+  { path: ':id/view', component: TodoDetailComponent } 
 ];
 
 @NgModule({

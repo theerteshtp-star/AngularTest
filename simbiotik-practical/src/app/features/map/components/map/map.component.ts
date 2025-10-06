@@ -40,7 +40,6 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
   onMapClick(e: any) {
     const latlng = e.latlng;
-    // If start not chosen, set start else set end
     if (!this.start) {
       this.start = { lat: latlng.lat, lon: latlng.lng, display_name: 'Selected point' };
       this.addMarker(latlng, 'Start');
@@ -49,7 +48,6 @@ export class MapComponent implements AfterViewInit, OnDestroy {
       this.addMarker(latlng, 'End');
       this.calcRoute();
     } else {
-      // clear and set start again
       this.clearRoute();
       this.start = { lat: latlng.lat, lon: latlng.lng, display_name: 'Selected point' };
       this.addMarker(latlng, 'Start');
@@ -79,12 +77,12 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     const sLng = +this.start.lon, sLat = +this.start.lat, eLng = +this.end.lon, eLat = +this.end.lat;
     this.osrm.route(sLng, sLat, eLng, eLat).subscribe({
       next: (res) => {
-        // remove existing route
+
         if (this.routeLayer) { this.map.removeLayer(this.routeLayer); }
         const geojson = res.routes?.[0]?.geometry;
         if (!geojson) { alert('No route found'); return; }
         this.routeLayer = L.geoJSON(geojson).addTo(this.map);
-        // fit to bounds
+
         const bounds = this.routeLayer.getBounds();
         this.map.fitBounds(bounds, { padding: [40, 40] });
         const distance = (res.routes[0].distance / 1000).toFixed(2);

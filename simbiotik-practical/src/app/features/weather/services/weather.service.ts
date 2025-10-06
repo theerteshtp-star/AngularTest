@@ -13,7 +13,6 @@ export class WeatherService {
     const params = new HttpParams()
       .set('q', city)
       .set('units', 'metric')
-      // .set('appid', environment.openWeatherApiKey);
     return this.http.get(url, { params });
   }
 
@@ -22,13 +21,10 @@ export class WeatherService {
     const params = new HttpParams()
       .set('q', city)
       .set('units', 'metric')
-      // .set('appid', environment.openWeatherApiKey);
     return this.http.get(url, { params });
   }
 
-  // helper to compute average temps for next days
   avgNextDays(forecastResponse: any, days = 4) {
-    // forecastResponse.list has 3hr intervals; group by date
     const mapByDate = new Map<string, number[]>();
     forecastResponse.list.forEach((entry: any) => {
       const date = entry.dt_txt.split(' ')[0];

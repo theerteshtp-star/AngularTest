@@ -1,1 +1,5 @@
-<p>todo-detail works!</p>
+<div class="p-4" *ngIf="todo">
+  <h3>{{todo.title}}</h3>
+  <p>{{todo.description}}</p>
+  <p>Status: {{todo.completed ? 'Done' : 'Pending'}}</p>
+</div>

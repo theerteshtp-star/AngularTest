@@ -9,7 +9,6 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
-// router: any;
 constructor(public router:Router){}
 
 }

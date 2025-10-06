@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
-  // standalone: true,
  
 })
 export class TodoListComponent implements OnInit {

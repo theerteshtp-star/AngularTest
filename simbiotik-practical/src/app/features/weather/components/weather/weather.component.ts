@@ -36,7 +36,6 @@ city = 'Bengaluru';
       this.loadForecast(this.city);
     });
 
-    // initial load
     this.search(this.city);
   }
 
