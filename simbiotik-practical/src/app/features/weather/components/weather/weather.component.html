@@ -1,1 +1,23 @@
-<p>weather works!</p>
+<div class="p-4">
+  <h3 class="text-xl mb-3">Weather</h3>
+  <div class="mb-2">
+    <input placeholder="Search city" (input)="search($any($event.target).value)" class="border p-2 w-full max-w-sm" />
+  </div>
+
+  <div *ngIf="loading" class="p-2 bg-blue-100">Loading...</div>
+  <div *ngIf="error" class="p-2 bg-yellow-100">Error: {{error}} <button (click)="search(city)">Retry</button></div>
+
+  <div *ngIf="current" class="mt-4">
+    <div>City: {{current.name}}</div>
+    <div>Temperature: {{current.main.temp}} °C</div>
+    <div>Condition: {{current.weather[0].description}}</div>
+  </div>
+
+  <h4 class="mt-4">Forecast Averages (next days)</h4>
+  <div class="grid grid-cols-3 gap-3">
+    <div *ngFor="let f of forecastAverages" class="p-2 border rounded">
+      <div>{{f.date}}</div>
+      <div>{{f.avgTemp}} °C</div>
+    </div>
+  </div>
+</div>
